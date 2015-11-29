@@ -15,6 +15,8 @@ namespace ASW_University.Controllers
     {
         private IUniversityContext db = new UniversityContext();
 
+        public AlunosController() { }
+
         public AlunosController(IUniversityContext context)
         {
             db = context;
