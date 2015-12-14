@@ -9,6 +9,7 @@ namespace ASW_University.Models
     public interface IUniversityContext : IDisposable
     {
         DbSet<Alunos> Alunos { get; }
+        DbSet<Cursos> Cursos { get; }
         int SaveChanges();
         void MarkAsModified(Alunos item);
     }

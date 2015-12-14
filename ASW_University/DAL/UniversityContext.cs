@@ -15,6 +15,7 @@ namespace ASW_University.DAL
         }
 
         public DbSet<Alunos> Alunos { get; set; }
+        public DbSet<Cursos> Cursos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

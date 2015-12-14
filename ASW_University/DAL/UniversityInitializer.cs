@@ -5,10 +5,15 @@ using System.Web;
 using System.Data.Entity;
 using ASW_University.Models;
 
+
 namespace ASW_University.DAL
 {
-    public class UniversityInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<UniversityContext>
+    public class UniversityInitializer : System.Data.Entity.DropCreateDatabaseAlways<UniversityContext>
     {
+
+
+        private ServiceReference1.IService1 _service = new ServiceReference1.Service1Client();
+       
         protected override void Seed(UniversityContext context)
         {
             var alunos = new List<Alunos>
@@ -24,8 +29,23 @@ namespace ASW_University.DAL
             };
 
             alunos.ForEach(s => context.Alunos.Add(s));
+
+          
+
+            //Servico que comunica com Sistema do MEC
+            List<String> _cursosString = _service.getAllCourses().ToList();
+            
+            List<Cursos> _cursos = new List<Cursos>();        
+
+            foreach (String curso in _cursosString)
+            {
+                Console.WriteLine(curso);
+                _cursos.Add(new Cursos { Nome = curso });
+
+            }
+
+            _cursos.ForEach(c => context.Cursos.Add(c));
             context.SaveChanges();
-  
-        }
+       }
     }
 }
