@@ -136,7 +136,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Alunos.cs" />
-    <Compile Include="Models\IUniversityContext.cs" />
+    <Compile Include="DAL\IUniversityContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
